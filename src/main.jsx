@@ -1,0 +1,76 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+
+import { createBrowserRouter, RouterProvider } from "react-router";
+import MainLayout from "./layouts/MainLayout.jsx";
+import SignIn from "./components/SignIn/SignIn.jsx";
+import SignUp from "./components/SignUp/SignUp.jsx";
+import AuthProvider from "./contexts/AuthProvider.jsx";
+import PrivateRoute from "./routes/PrivateRoute.jsx";
+import AddServices from "./components/Add Services/AddServices.jsx";
+import Home from "./components/Home/Home.jsx";
+import AllServices from "./components/All Services/AllServices.jsx";
+import axios from "axios";
+import MyServices from "./components/My Services/MyServices.jsx";
+import SeeDetails from "./components/All Services/SeeDetails.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: MainLayout,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "/AllServices",
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/service`),
+        Component: AllServices,
+      },
+      {
+        path: "AddServices",
+        element: (
+          <PrivateRoute>
+            <AddServices />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "MyServices/:email",
+        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/my-service/${params.email}`),
+        element: (
+          <PrivateRoute>
+            <MyServices />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "services/:id",
+        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/service/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <SeeDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "signin",
+        Component: SignIn,
+      },
+      {
+        path: "signup",
+        Component: SignUp,
+      },
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </StrictMode>
+);
