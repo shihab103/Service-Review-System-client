@@ -15,6 +15,7 @@ const AddServices = () => {
     const formData = new FormData(form);
     const newService = Object.fromEntries(formData.entries());
     newService.email = user?.email;
+    newService.reviewBy = [];
 
     console.log(newService);
 

@@ -22,6 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/service`),
         Component: Home,
       },
       {
