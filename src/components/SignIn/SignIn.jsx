@@ -1,7 +1,8 @@
 import { use } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import Swal from 'sweetalert2'
-import { useLocation, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
+import GoogleLogin from '../GoogleLogin/GoogleLogin'
 
 const SignIn = () => {
   const { signIn } = use(AuthContext)
@@ -54,6 +55,8 @@ const SignIn = () => {
           </div>
           <button className='btn btn-neutral mt-4'>Sign in</button>
         </form>
+        <p>If you not register go to <Link to={'/signup'} className='text-blue-500'>Register</Link></p>
+        <GoogleLogin/>
       </div>
     </div>
   )

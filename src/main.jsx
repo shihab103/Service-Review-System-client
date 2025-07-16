@@ -14,6 +14,8 @@ import AllServices from "./components/All Services/AllServices.jsx";
 import axios from "axios";
 import MyServices from "./components/My Services/MyServices.jsx";
 import SeeDetails from "./components/All Services/SeeDetails.jsx";
+import UpdateServices from "./components/My Services/UpdateServices.jsx";
+import MyReviews from "./components/MyReview/MyReviews.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +33,20 @@ const router = createBrowserRouter([
         Component: AllServices,
       },
       {
-        path: "AddServices",
+        path: "/updateServices/:id",
+        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/service/${params.id}`),
+        Component: UpdateServices
+      },
+      {
+        path: "/my-reviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AddServices",
         element: (
           <PrivateRoute>
             <AddServices />
@@ -39,8 +54,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "MyServices/:email",
-        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/my-service/${params.email}`),
+        path: "/MyServices/:email",
+        // loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/my-service/${params.email}`),
         element: (
           <PrivateRoute>
             <MyServices />
@@ -48,8 +63,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "services/:id",
-        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/service/${params.id}`),
+        path: "/services/:id",
         element: (
           <PrivateRoute>
             <SeeDetails />
@@ -57,11 +71,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "signin",
+        path: "/signin",
         Component: SignIn,
       },
       {
-        path: "signup",
+        path: "/signup",
         Component: SignUp,
       },
     ],

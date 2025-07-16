@@ -42,7 +42,12 @@ const Header = () => {
                   <NavLink to="/AddServices">Add Services</NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/MyServices/${user?.email}`}>My Services</NavLink>
+                  <NavLink to={`/MyServices/${user?.email}`}>
+                    My Services
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={`/my-reviews`}>My Reviews</NavLink>
                 </li>
               </>
             )}
@@ -67,6 +72,9 @@ const Header = () => {
               <li>
                 <NavLink to={`/MyServices/${user?.email}`}>My Services</NavLink>
               </li>
+              <li>
+                <NavLink to={`/my-reviews`}>My Reviews</NavLink>
+              </li>
               {user && (
                 <div className="flex justify-around items-center gap-2">
                   {user?.photoURL && (
@@ -77,7 +85,7 @@ const Header = () => {
                       className="w-8 rounded-full hidden md:flex"
                     />
                   )}
-                  <button className="btn btn-warning" onClick={logOut}>
+                  <button className="btn btn-primary" onClick={logOut}>
                     Logout
                   </button>
                 </div>

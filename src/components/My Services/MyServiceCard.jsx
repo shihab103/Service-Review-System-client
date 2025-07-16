@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-const MyServiceCard = ({ service }) => {
+const MyServiceCard = ({ service,onDelete }) => {
   const { _id, image, title, description, category, price } = service;
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     Swal.fire({
@@ -21,14 +22,11 @@ const MyServiceCard = ({ service }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("after delete", data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your service has been deleted.", "success");
+              onDelete(_id); // parent ke bolo ei service delete hoyeche
+            }
           });
-
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your coffee has been deleted.",
-          icon: "success",
-        });
       }
     });
   };
@@ -37,21 +35,24 @@ const MyServiceCard = ({ service }) => {
     <div className="card bg-base-100 mx-auto w-full shadow-sm">
       <figure>
         <img
-        className="h-[250px] w-full object-cover"
+          className="h-[250px] w-full object-cover"
           src={image}
-          alt="Shoes"
+          alt={title}
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          {title}
-        </h2>
-        <p>
-          {description}
-        </p>
+        <h2 className="card-title">{title}</h2>
+        <p>{description}</p>
         <div className="card-actions justify-end">
-          <button className="badge btn badge-outline">Update</button>
-          <button onClick={handleDelete} className="badge btn badge-outline">Delete</button>
+          <button
+            onClick={() => navigate(`/updateServices/${_id}`)}
+            className="badge btn badge-outline"
+          >
+            Update
+          </button>
+          <button onClick={handleDelete} className="badge btn badge-outline">
+            Delete
+          </button>
         </div>
       </div>
     </div>

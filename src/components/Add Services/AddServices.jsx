@@ -10,36 +10,40 @@ const AddServices = () => {
   const { user } = use(AuthContext);
 
   const handleAddService = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    const newService = Object.fromEntries(formData.entries());
-    newService.email = user?.email;
-    newService.reviewBy = [];
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const newService = Object.fromEntries(formData.entries());
 
-    console.log(newService);
+  // Add current date
+  newService.addedDate = new Date().toISOString().split("T")[0];
 
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/add-service`, newService)
-      .then((data) => {
-        console.log(data);
-        Swal.fire({
-          title: "Good job!",
-          text: "Data Added Successfully",
-          icon: "success",
-        });
-        navigate("/");
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="#">Why do I have this issue?</a>',
-        });
-        console.log(error);
+  newService.email = user?.email;
+
+  console.log(newService);
+
+  axios
+    .post(`${import.meta.env.VITE_API_URL}/add-service`, newService)
+    .then((data) => {
+      console.log(data);
+      Swal.fire({
+        title: "Good job!",
+        text: "Data Added Successfully",
+        icon: "success",
       });
-  };
+      navigate("/");
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
+      console.log(error);
+    });
+};
+
 
   return (
     <div className="max-w-3xl  my-10 shadow-2xl mx-auto px-4 py-8">
