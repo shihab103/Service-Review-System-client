@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useParams } from "react-router";
 import axios from "axios";
 import Rating from "react-rating";
 import Swal from "sweetalert2";
+import { getIdToken } from "firebase/auth";
+import { PacmanLoader } from "react-spinners";
 
 const SeeDetails = () => {
-  const ratingRef = useRef(null);
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const [service, setService] = useState([null]);
 
   const { id } = useParams();
@@ -17,10 +18,31 @@ const SeeDetails = () => {
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/service/${id}`)
-      .then((res) => res.json())
-      .then((data) => setService(data));
-  }, [id]);
+      const fetchServices = async () => {
+        if (!loading && user?.email) {
+          try {
+            const accessToken = await getIdToken(user);
+  
+            const res = await fetch(
+              `${import.meta.env.VITE_API_URL}/service/${id}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                },
+              }
+            );
+  
+            const data = await res.json();
+            setService(data);
+          } catch (error) {
+            console.error("Failed to fetch services:", error);
+          }
+        }
+      };
+  
+      fetchServices();
+    }, [loading, user?.email]);
+
 
   if (!service) {
     return (
@@ -29,6 +51,14 @@ const SeeDetails = () => {
       </div>
     );
   }
+
+   if (loading) {
+      return (
+        <div className="h-screen flex justify-center items-center">
+          <PacmanLoader color="#36d7b7" size={25} />
+        </div>
+      );
+    }
 
   const { title, image, price, _id, company } = service;
 

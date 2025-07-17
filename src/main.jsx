@@ -34,7 +34,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateServices/:id",
-        loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/service/${params.id}`),
         Component: UpdateServices
       },
       {
@@ -55,7 +54,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/MyServices/:email",
-        // loader: ({params}) => axios(`${import.meta.env.VITE_API_URL}/my-service/${params.email}`),
         element: (
           <PrivateRoute>
             <MyServices />

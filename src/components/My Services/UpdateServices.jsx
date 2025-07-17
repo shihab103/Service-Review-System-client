@@ -1,44 +1,80 @@
-import { useLoaderData, useNavigate } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../contexts/AuthContext";
+import { getIdToken } from "firebase/auth";
 
 const UpdateServices = () => {
-  const data = useLoaderData(); // data.data contains the actual service
-  const service = data.data;
-  const { _id, title, image, email, company, price, website, description, category } = service;
-
+  const { user, loading } = useContext(AuthContext);
+  const [service, setService] = useState(null);
+  const { id } = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchService = async () => {
+      if (!loading && user?.email) {
+        try {
+          const accessToken = await getIdToken(user);
 
-  const handleUpdateServices = (e) => {
+          const res = await fetch(`${import.meta.env.VITE_API_URL}/service/${id}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+
+          const data = await res.json();
+          setService(data);
+        } catch (error) {
+          console.error("Failed to fetch service:", error);
+        }
+      }
+    };
+
+    fetchService();
+  }, [loading, id, user]);
+
+  const handleUpdateServices = async (e) => {
     e.preventDefault();
-
     const form = e.target;
     const formData = new FormData(form);
     const updateServices = Object.fromEntries(formData.entries());
 
-    // send updated services to the db
-    fetch(`http://localhost:3000/service/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateServices),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Service Updated Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          }).then(() => {
-            navigate(`/MyServices/${email}`);
-          });
-        }
+    try {
+      const accessToken = await getIdToken(user);
+
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/service/${service._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(updateServices),
       });
+
+      const data = await res.json();
+
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Service Updated Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          navigate(`/MyServices/${service.email}`);
+        });
+      } else {
+        Swal.fire("No changes were made.", "", "info");
+      }
+    } catch (err) {
+      console.error("Update failed:", err);
+      Swal.fire("Failed to update service", "", "error");
+    }
   };
+
+  if (!service) return <div className="text-center mt-10">Loading service details...</div>;
+
+  const { title, image, company, website, description, category, price } = service;
 
   return (
     <div className="max-w-3xl my-10 shadow-2xl mx-auto px-4 py-8">
@@ -99,7 +135,6 @@ const UpdateServices = () => {
           className="input input-bordered w-full"
           required
         />
-
         <input
           type="submit"
           className="btn btn-primary mt-2 w-full"
