@@ -17,7 +17,7 @@ const MyServiceCard = ({ service,onDelete }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/service/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/service/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -46,11 +46,11 @@ const MyServiceCard = ({ service,onDelete }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => navigate(`/updateServices/${_id}`)}
-            className="badge btn badge-outline"
+            className="btn text-pink-500 btn-outline"
           >
             Update
           </button>
-          <button onClick={handleDelete} className="badge btn badge-outline">
+          <button onClick={handleDelete} className="btn text-green-500 btn-outline">
             Delete
           </button>
         </div>

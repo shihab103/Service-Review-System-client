@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
-      axios.get("http://localhost:3000", {
+      axios.get(`${import.meta.env.VITE_API_URL}`, {
         headers: {
           Authorization: `Bearer ${currentUser.accessToken}`,
         },

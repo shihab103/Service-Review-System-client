@@ -8,9 +8,8 @@ import { getIdToken } from "firebase/auth";
 import { PacmanLoader } from "react-spinners";
 
 const SeeDetails = () => {
-  const { user,loading } = useContext(AuthContext);
-  const [service, setService] = useState([null]);
-
+  const { user, loading } = useContext(AuthContext);
+  const [service, setService] = useState(null);
   const { id } = useParams();
 
   const [reviews, setReviews] = useState([]);
@@ -18,31 +17,44 @@ const SeeDetails = () => {
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
-      const fetchServices = async () => {
-        if (!loading && user?.email) {
-          try {
-            const accessToken = await getIdToken(user);
-  
-            const res = await fetch(
-              `${import.meta.env.VITE_API_URL}/service/${id}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${accessToken}`,
-                },
-              }
-            );
-  
-            const data = await res.json();
-            setService(data);
-          } catch (error) {
-            console.error("Failed to fetch services:", error);
-          }
-        }
-      };
-  
-      fetchServices();
-    }, [loading, user?.email]);
+    const fetchServices = async () => {
+      if (!loading && user?.email) {
+        try {
+          const accessToken = await getIdToken(user);
 
+          const res = await fetch(`${import.meta.env.VITE_API_URL}/service/${id}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+
+          const data = await res.json();
+          setService(data);
+        } catch (error) {
+          console.error("Failed to fetch services:", error);
+        }
+      }
+    };
+
+    fetchServices();
+  }, [loading, user?.email, id]);
+
+  useEffect(() => {
+    if (service?._id) {
+      axios
+        .get(`${import.meta.env.VITE_API_URL}/reviews/${service._id}`)
+        .then((res) => setReviews(res.data))
+        .catch((err) => console.log(err));
+    }
+  }, [service?._id]);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <PacmanLoader color="#36d7b7" size={25} />
+      </div>
+    );
+  }
 
   if (!service) {
     return (
@@ -52,32 +64,11 @@ const SeeDetails = () => {
     );
   }
 
-   if (loading) {
-      return (
-        <div className="h-screen flex justify-center items-center">
-          <PacmanLoader color="#36d7b7" size={25} />
-        </div>
-      );
-    }
-
   const { title, image, price, _id, company } = service;
 
-  // Load reviews from backend
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/reviews/${_id}`)
-      .then((res) => setReviews(res.data))
-      .catch((err) => console.log(err));
-  }, [_id]);
-
-  // Submit review handler
   const handleSubmitReview = async () => {
     if (!textReview || rating === 0) {
-      return Swal.fire(
-        "Error",
-        "Please provide both rating and review text",
-        "error"
-      );
+      return Swal.fire("Error", "Please provide both rating and review text", "error");
     }
 
     const reviewData = {
@@ -92,13 +83,15 @@ const SeeDetails = () => {
     };
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/reviews`,
-        reviewData
-      );
+      const accessToken = await getIdToken(user);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       if (res.data.insertedId) {
         Swal.fire("Success", "Review added successfully", "success");
-        setReviews([reviewData, ...reviews]); // show instantly
+        setReviews([reviewData, ...reviews]);
         setTextReview("");
         setRating(0);
       }
@@ -110,30 +103,24 @@ const SeeDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-10 px-4">
-      <div className="bg-base-100 shadow-xl rounded-lg overflow-hidden md:flex">
-        {/* Image Section */}
-        <div className="md:w-1/2">
-          <img src={image} alt={title} className="w-full h-full object-cover" />
+      {/* Service Details Section */}
+      <div className="bg-base-100 shadow-xl rounded-xl overflow-hidden">
+        {/* Image */}
+        <div className="h-64 md:h-96">
+          <img src={image} alt={title} className="w-full h-full object-cover rounded-t-xl" />
         </div>
 
-        {/* Details Section */}
-        <div className="md:w-1/2 p-6 flex flex-col justify-center gap-4">
-          <h2 className="text-3xl font-bold">{title}</h2>
-          <p className="text-lg text-gray-600">
-            <span className="font-semibold">Company:</span> {company}
-          </p>
-          <p className="text-lg text-gray-600">
-            <span className="font-semibold">Price:</span> ৳{price}
-          </p>
-          <div>
-            {user ? (
-              <button className="btn btn-primary">Order</button>
-            ) : (
-              <p className="text-red-500">
-                Please log in to order this service.
-              </p>
-            )}
-          </div>
+        {/* Title & Price */}
+        <div className="p-6 md:p-8 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4">
+          <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
+          <span className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+            ৳{price}
+          </span>
+        </div>
+
+      {/* Company */}
+        <div className="px-6 md:px-8 pb-6 text-gray-600">
+          <span className="font-semibold">Company:</span> {company}
         </div>
       </div>
 
@@ -173,16 +160,9 @@ const SeeDetails = () => {
             <p>No reviews yet.</p>
           ) : (
             reviews.map((r, idx) => (
-              <div
-                key={idx}
-                className="p-4 border rounded-md shadow-sm bg-white"
-              >
+              <div key={idx} className="p-4 border rounded-md shadow-sm bg-white">
                 <div className="flex items-center gap-3 mb-2">
-                  <img
-                    src={r.userPhoto}
-                    alt={r.userName}
-                    className="w-10 h-10 rounded-full"
-                  />
+                  <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full" />
                   <div>
                     <p className="font-semibold">{r.userName}</p>
                     <p className="text-sm text-gray-500">{r.date}</p>
@@ -193,9 +173,7 @@ const SeeDetails = () => {
                   readonly
                   initialRating={r.rating}
                   emptySymbol={<span className="text-lg text-gray-400">☆</span>}
-                  fullSymbol={
-                    <span className="text-lg text-yellow-500">★</span>
-                  }
+                  fullSymbol={<span className="text-lg text-yellow-500">★</span>}
                 />
               </div>
             ))

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
@@ -36,7 +36,7 @@ const Header = () => {
               <NavLink to="/AllServices">All Services</NavLink>
             </li>
 
-            {user && (
+            {user ? (
               <>
                 <li>
                   <NavLink to="/AddServices">Add Services</NavLink>
@@ -47,13 +47,32 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/my-reviews`}>My Reviews</NavLink>
+                  <NavLink to="/my-reviews">My Reviews</NavLink>
+                </li>
+                <li>
+                  <button
+                    onClick={logOut}
+                    className="btn btn-primary w-full mt-1"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/signin">Login</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/signup">Register</NavLink>
                 </li>
               </>
             )}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">ServiceScout</a>
+        <Link to={'/'}>
+          <a className="btn btn-ghost text-xl">ServiceScout</a>
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1 items-center">
