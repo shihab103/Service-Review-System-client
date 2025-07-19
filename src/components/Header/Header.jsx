@@ -70,8 +70,8 @@ const Header = () => {
             )}
           </ul>
         </div>
-        <Link to={'/'}>
-          <a className="btn btn-ghost text-xl">ServiceScout</a>
+        <Link to={"/"} className="btn btn-ghost text-xl">
+          ServiceScout
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">

@@ -16,11 +16,13 @@ import MyServices from "./components/My Services/MyServices.jsx";
 import SeeDetails from "./components/All Services/SeeDetails.jsx";
 import UpdateServices from "./components/My Services/UpdateServices.jsx";
 import MyReviews from "./components/MyReview/MyReviews.jsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
