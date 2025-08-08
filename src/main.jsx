@@ -17,12 +17,13 @@ import SeeDetails from "./components/All Services/SeeDetails.jsx";
 import UpdateServices from "./components/My Services/UpdateServices.jsx";
 import MyReviews from "./components/MyReview/MyReviews.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
+import DashboardLayout from "./layouts/DashboardLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateServices/:id",
-        Component: UpdateServices
+        Component: UpdateServices,
       },
       {
         path: "/my-reviews",
@@ -77,6 +78,15 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         Component: SignUp,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <DashboardLayout />
+          </PrivateRoute>
+        ),
+        children: [],
       },
     ],
   },

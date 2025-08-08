@@ -50,10 +50,7 @@ const Header = () => {
                   <NavLink to="/my-reviews">My Reviews</NavLink>
                 </li>
                 <li>
-                  <button
-                    onClick={logOut}
-                    className="btn btn-bg w-full mt-1"
-                  >
+                  <button onClick={logOut} className="btn btn-bg w-full mt-1">
                     Logout
                   </button>
                 </li>
@@ -91,6 +88,15 @@ const Header = () => {
               <li>
                 <NavLink to={`/MyServices/${user?.email}`}>My Services</NavLink>
               </li>
+              {user && (
+                <>
+                  <li>
+                    <NavLink to={'/dashboard'}>
+                      Dashboard
+                    </NavLink>
+                  </li>
+                </>
+              )}
               <li>
                 <NavLink to={`/my-reviews`}>My Reviews</NavLink>
               </li>
