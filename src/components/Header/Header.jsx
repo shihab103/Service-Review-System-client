@@ -42,11 +42,6 @@ const Header = () => {
                   <NavLink to="/AddServices">Add Services</NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/MyServices/${user?.email}`}>
-                    My Services
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink to="/my-reviews">My Reviews</NavLink>
                 </li>
                 <li>
@@ -67,7 +62,7 @@ const Header = () => {
             )}
           </ul>
         </div>
-        <Link to={"/"} className="btn btn-ghost text-xl">
+        <Link to={"/"} className="font-bold text-[#513326] text-xl">
           ServiceScout
         </Link>
       </div>
@@ -82,12 +77,6 @@ const Header = () => {
 
           {user ? (
             <>
-              <li>
-                <NavLink to="/AddServices">Add Services</NavLink>
-              </li>
-              <li>
-                <NavLink to={`/MyServices/${user?.email}`}>My Services</NavLink>
-              </li>
               {user && (
                 <>
                   <li>

@@ -113,7 +113,7 @@ const SeeDetails = () => {
         {/* Title & Price */}
         <div className="p-6 md:p-8 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4">
           <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
-          <span className="btn-bg text-black font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+          <span className="btn-bg  font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
             ৳{price}
           </span>
         </div>
@@ -145,7 +145,7 @@ const SeeDetails = () => {
                 emptySymbol={<span className="text-3xl text-gray-400">☆</span>}
                 fullSymbol={<span className="text-3xl text-yellow-500">★</span>}
               />
-              <button className="btn btn-primary" onClick={handleSubmitReview}>
+              <button className="btn btn-bg " onClick={handleSubmitReview}>
                 Add Review
               </button>
             </div>

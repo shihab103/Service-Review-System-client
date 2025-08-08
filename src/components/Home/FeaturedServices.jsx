@@ -8,18 +8,22 @@ const FeaturedServices = ({ servicesData }) => {
     <div className="my-10">
       <h2 className="text-3xl font-bold text-center mb-6">Featured Services</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
-        {data.slice(0, 5).map((service) => (
+        {data.slice(0, 10).map((service) => (
           <div
             key={service._id}
             className="card-bg rounded-xl shadow-md hover:shadow-lg border border-gray-200 transition duration-300 flex flex-col"
           >
-            <figure className="h-32 overflow-hidden rounded-t-xl">
-              <img
-                src={service.image}
-                alt={service.title}
-                className="w-full h-full object-cover"
-              />
-            </figure>
+            {/* Apply same padding around image */}
+            <div className="p-3 pt-3 pb-0">
+              <figure className="h-32 overflow-hidden rounded-lg">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </figure>
+            </div>
+
             <div className="p-3 flex flex-col flex-grow">
               <h2 className="text-sm font-bold mb-1 line-clamp-1">
                 {service.title}

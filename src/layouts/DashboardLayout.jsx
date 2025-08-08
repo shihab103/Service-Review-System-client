@@ -41,9 +41,10 @@ const DashboardLayout = () => {
       {/* Sidebar */}
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-80 min-h-full card-bg text-base-content">
           <li><NavLink className="mt-5 font-semibold" to="/dashboard">Dashboard Home</NavLink></li>
-          <li><NavLink className={'font-semibold'} to={'/dashboard/myParcels'}>My Parcels</NavLink></li>
+          <li><NavLink className={'font-semibold'} to={'/dashboard/AddServices'}>Add Service</NavLink></li>
+          <li><NavLink className={'font-semibold'} to={'/dashboard/MyServices/:email'}>My Services</NavLink></li>
         </ul>
       </div>
     </div>

@@ -47,22 +47,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/AddServices",
-        element: (
-          <PrivateRoute>
-            <AddServices />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/MyServices/:email",
-        element: (
-          <PrivateRoute>
-            <MyServices />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "/services/:id",
         element: (
@@ -86,7 +71,16 @@ const router = createBrowserRouter([
             <DashboardLayout />
           </PrivateRoute>
         ),
-        children: [],
+        children: [
+          {
+            path: "AddServices",
+            Component: AddServices,
+          },
+          {
+            path: "MyServices/:email",
+            Component: MyServices,
+          },
+        ],
       },
     ],
   },
