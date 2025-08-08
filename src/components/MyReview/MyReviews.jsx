@@ -83,7 +83,7 @@ const MyReviews = () => {
           {myReviews.map((review) => (
             <div
               key={review._id}
-              className="bg-base-100 shadow-md p-6 rounded-lg flex flex-col gap-2"
+              className="card-bg shadow-md p-6 rounded-lg flex flex-col gap-2"
             >
               <p className="text-xl font-semibold">{review.serviceTitle}</p>
               <p className="text-gray-700">{review.reviewText}</p>
@@ -96,7 +96,7 @@ const MyReviews = () => {
               <div className="flex gap-4 mt-2">
                 <button
                   onClick={() => openUpdateModal(review)}
-                  className="btn btn-sm btn-info"
+                  className="btn btn-sm btn-bg border-0"
                 >
                   Update
                 </button>
@@ -114,14 +114,14 @@ const MyReviews = () => {
 
       {/* Update Modal */}
       <dialog id="update_modal" className="modal">
-        <div className="modal-box">
+        <div className="modal-box card-bg">
           <h3 className="font-bold text-xl mb-3">Update Your Review</h3>
 
           <div className="mb-2">
             <label className="font-semibold">Service Title:</label>
             <input
               type="text"
-              className="input input-bordered w-full"
+              className="input bg input-bordered w-full"
               value={editingReview?.serviceTitle}
               readOnly
             />
@@ -130,7 +130,7 @@ const MyReviews = () => {
           <div className="mb-2">
             <label className="font-semibold">Review:</label>
             <textarea
-              className="textarea textarea-bordered w-full"
+              className="textarea bg textarea-bordered w-full"
               value={updatedText}
               onChange={(e) => setUpdatedText(e.target.value)}
             ></textarea>
@@ -148,9 +148,9 @@ const MyReviews = () => {
 
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button className="btn bg">Close</button>
             </form>
-            <button onClick={handleUpdateReview} className="btn btn-primary">
+            <button onClick={handleUpdateReview} className="btn btn-bg ">
               Save Changes
             </button>
           </div>

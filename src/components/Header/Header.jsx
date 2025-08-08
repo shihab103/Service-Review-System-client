@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar h-20 card-bg shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Header = () => {
                 <li>
                   <button
                     onClick={logOut}
-                    className="btn btn-primary w-full mt-1"
+                    className="btn btn-bg w-full mt-1"
                   >
                     Logout
                   </button>
@@ -104,7 +104,7 @@ const Header = () => {
                       className="w-8 rounded-full hidden md:flex"
                     />
                   )}
-                  <button className="btn btn-primary" onClick={logOut}>
+                  <button className="btn border-0 btn-bg" onClick={logOut}>
                     Logout
                   </button>
                 </div>

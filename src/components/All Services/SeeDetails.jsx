@@ -104,7 +104,7 @@ const SeeDetails = () => {
   return (
     <div className="max-w-5xl mx-auto my-10 px-4">
       {/* Service Details Section */}
-      <div className="bg-base-100 shadow-xl rounded-xl overflow-hidden">
+      <div className="card-bg shadow-xl rounded-xl overflow-hidden">
         {/* Image */}
         <div className="h-64 md:h-96">
           <img src={image} alt={title} className="w-full h-full object-cover rounded-t-xl" />
@@ -113,7 +113,7 @@ const SeeDetails = () => {
         {/* Title & Price */}
         <div className="p-6 md:p-8 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4">
           <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
-          <span className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+          <span className="btn-bg text-black font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
             ৳{price}
           </span>
         </div>
@@ -130,10 +130,10 @@ const SeeDetails = () => {
 
         {/* Add Review */}
         {user ? (
-          <div className="bg-base-200 p-4 rounded-lg mb-6">
+          <div className="card-bg p-4 rounded-lg mb-6">
             <h4 className="text-xl font-semibold mb-2">Add Your Review</h4>
             <textarea
-              className="textarea textarea-bordered w-full mb-3"
+              className="textarea bg textarea-bordered w-full mb-3"
               placeholder="Write your review..."
               value={textReview}
               onChange={(e) => setTextReview(e.target.value)}
@@ -160,7 +160,7 @@ const SeeDetails = () => {
             <p>No reviews yet.</p>
           ) : (
             reviews.map((r, idx) => (
-              <div key={idx} className="p-4 border rounded-md shadow-sm bg-white">
+              <div key={idx} className="p-4 rounded-md shadow-sm bg">
                 <div className="flex items-center gap-3 mb-2">
                   <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full" />
                   <div>

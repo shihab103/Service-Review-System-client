@@ -5,7 +5,7 @@ const ServiceCard = ({ service }) => {
   const { _id, image, title, description, category, price } = service;
 
   return (
-    <div className="card lg:card-side lg:h-[250px] bg-base-100 shadow-md hover:shadow-xl transition duration-300">
+    <div className="card lg:card-side lg:h-[250px] card-bg shadow-md hover:shadow-xl transition duration-300">
       <figure className="lg:w-1/2">
         <img
           src={image}
@@ -20,7 +20,7 @@ const ServiceCard = ({ service }) => {
         <p className="font-semibold text-lg text-green-600">${price}</p>
         <div className="card-actions mt-4">
           <Link to={`/services/${_id}`}>
-          <button className="btn btn-primary">See Details</button>
+          <button className="btn btn-bg border-0">See Details</button>
           </Link>
         </div>
       </div>

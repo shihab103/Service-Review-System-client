@@ -63,53 +63,53 @@ const AddServices = () => {
           type="text"
           name="title"
           placeholder="Service Title"
-          className="input input-bordered w-full"
+          className="input input-bordered bg-[#9afcd890] w-full"
           required
         />
         <input
           type="url"
           name="image"
           placeholder="Image URL"
-          className="input input-bordered w-full"
+          className="input input-bordered bg-[#9afcd890] w-full"
           required
         />
         <input
           type="text"
           name="company"
           placeholder="Company Name"
-          className="input input-bordered w-full"
+          className="input input-bordered bg-[#9afcd890] w-full"
           required
         />
         <input
           type="url"
           name="website"
           placeholder="Website URL"
-          className="input input-bordered w-full"
+          className="input input-bordered bg-[#9afcd890] w-full"
           required
         />
         <textarea
           name="description"
           placeholder="Description"
-          className="textarea textarea-bordered w-full"
+          className="textarea textarea-bordered bg-[#9afcd890] w-full"
           required
         ></textarea>
         <input
           type="text"
           name="category"
           placeholder="Category (e.g., IT, Transport)"
-          className="input input-bordered w-full"
+          className="input input-bordered bg-[#9afcd890] w-full"
           required
         />
         <input
           type="number"
           name="price"
           placeholder="Price in BDT"
-          className="input input-bordered w-full"
+          className="input input-bordered bg-[#9afcd890] w-full"
           required
         />
         <input
           type="submit"
-          className="btn btn-primary mt-2 w-full"
+          className="btn btn-bg mt-2 w-full"
           value="Add Service"
         />
       </form>

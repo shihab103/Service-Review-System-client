@@ -32,7 +32,7 @@ const MyServiceCard = ({ service,onDelete }) => {
   };
 
   return (
-    <div className="card bg-base-100 mx-auto w-full shadow-sm">
+    <div className="card card-bg mx-auto w-full shadow-sm">
       <figure>
         <img
           className="h-[250px] w-full object-cover"

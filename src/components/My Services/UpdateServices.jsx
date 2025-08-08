@@ -85,7 +85,7 @@ const UpdateServices = () => {
           name="title"
           defaultValue={title}
           placeholder="Service Title"
-          className="input input-bordered w-full"
+          className="input bg-[#9afcd890] input-bordered w-full"
           required
         />
         <input
@@ -93,7 +93,7 @@ const UpdateServices = () => {
           name="image"
           defaultValue={image}
           placeholder="Image URL"
-          className="input input-bordered w-full"
+          className="input bg-[#9afcd890] input-bordered w-full"
           required
         />
         <input
@@ -101,7 +101,7 @@ const UpdateServices = () => {
           name="company"
           defaultValue={company}
           placeholder="Company Name"
-          className="input input-bordered w-full"
+          className="input bg-[#9afcd890] input-bordered w-full"
           required
         />
         <input
@@ -109,14 +109,14 @@ const UpdateServices = () => {
           name="website"
           defaultValue={website}
           placeholder="Website URL"
-          className="input input-bordered w-full"
+          className="input bg-[#9afcd890] input-bordered w-full"
           required
         />
         <textarea
           name="description"
           defaultValue={description}
           placeholder="Description"
-          className="textarea textarea-bordered w-full"
+          className="textarea bg-[#9afcd890] textarea-bordered w-full"
           required
         ></textarea>
         <input
@@ -124,7 +124,7 @@ const UpdateServices = () => {
           name="category"
           defaultValue={category}
           placeholder="Category (e.g., IT, Transport)"
-          className="input input-bordered w-full"
+          className="input bg-[#9afcd890] input-bordered w-full"
           required
         />
         <input
@@ -132,12 +132,12 @@ const UpdateServices = () => {
           name="price"
           defaultValue={price}
           placeholder="Price in BDT"
-          className="input input-bordered w-full"
+          className="input bg-[#9afcd890] input-bordered w-full"
           required
         />
         <input
           type="submit"
-          className="btn btn-primary mt-2 w-full"
+          className="btn btn-bg mt-2 w-full"
           value="Update Service"
         />
       </form>

@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 const Footer = () => {
     const {user} = useContext(AuthContext);
   return (
-    <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+    <footer className="footer footer-horizontal footer-center card-bg text-base-content rounded p-10">
       <nav className="grid grid-flow-col gap-4">
         <ul className="menu menu-horizontal flex flex-col lg:flex-row gap-4">
           <li>
