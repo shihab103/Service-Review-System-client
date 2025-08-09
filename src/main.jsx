@@ -18,6 +18,9 @@ import UpdateServices from "./components/My Services/UpdateServices.jsx";
 import MyReviews from "./components/MyReview/MyReviews.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import About from "./Pages/About/About.jsx";
+import ContactUs from "./Pages/ContactUs/ContactUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,18 +39,13 @@ const router = createBrowserRouter([
         Component: AllServices,
       },
       {
-        path: "/updateServices/:id",
-        Component: UpdateServices,
+        path:'/about',
+        Component: About,
       },
       {
-        path: "/my-reviews",
-        element: (
-          <PrivateRoute>
-            <MyReviews />
-          </PrivateRoute>
-        ),
+        path:'/contact',
+        Component: ContactUs,
       },
-
       {
         path: "/services/:id",
         element: (
@@ -64,23 +62,32 @@ const router = createBrowserRouter([
         path: "/signup",
         Component: SignUp,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      { index: true, Component: Dashboard },
       {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <DashboardLayout />
-          </PrivateRoute>
-        ),
-        children: [
-          {
-            path: "AddServices",
-            Component: AddServices,
-          },
-          {
-            path: "MyServices/:email",
-            Component: MyServices,
-          },
-        ],
+        path: "AddServices",
+        Component: AddServices,
+      },
+      {
+        path: "MyServices/:email",
+        Component: MyServices,
+      },
+      {
+        path: "updateServices/:id",
+        Component: UpdateServices,
+      },
+      {
+        path: "my-reviews",
+        Component: MyReviews,
       },
     ],
   },

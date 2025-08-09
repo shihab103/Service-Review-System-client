@@ -61,7 +61,7 @@ const UpdateServices = () => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          navigate(`/MyServices/${service.email}`);
+          navigate(`/dashboard/MyServices/${service.email}`);
         });
       } else {
         Swal.fire("No changes were made.", "", "info");
@@ -77,7 +77,7 @@ const UpdateServices = () => {
   const { title, image, company, website, description, category, price } = service;
 
   return (
-    <div className="max-w-3xl my-10 shadow-2xl mx-auto px-4 py-8">
+    <div className="max-w-3xl my-10 btn-bg shadow-2xl mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-6 text-center">Update Service</h2>
       <form onSubmit={handleUpdateServices} className="flex flex-col items-center gap-4">
         <input
@@ -85,7 +85,7 @@ const UpdateServices = () => {
           name="title"
           defaultValue={title}
           placeholder="Service Title"
-          className="input bg-[#9afcd890] input-bordered w-full"
+          className="input bg-[#f0ded0] input-bordered w-full"
           required
         />
         <input
@@ -93,7 +93,7 @@ const UpdateServices = () => {
           name="image"
           defaultValue={image}
           placeholder="Image URL"
-          className="input bg-[#9afcd890] input-bordered w-full"
+          className="input bg-[#f0ded0] input-bordered w-full"
           required
         />
         <input
@@ -101,7 +101,7 @@ const UpdateServices = () => {
           name="company"
           defaultValue={company}
           placeholder="Company Name"
-          className="input bg-[#9afcd890] input-bordered w-full"
+          className="input bg-[#f0ded0] input-bordered w-full"
           required
         />
         <input
@@ -109,14 +109,14 @@ const UpdateServices = () => {
           name="website"
           defaultValue={website}
           placeholder="Website URL"
-          className="input bg-[#9afcd890] input-bordered w-full"
+          className="input bg-[#f0ded0] input-bordered w-full"
           required
         />
         <textarea
           name="description"
           defaultValue={description}
           placeholder="Description"
-          className="textarea bg-[#9afcd890] textarea-bordered w-full"
+          className="textarea bg-[#f0ded0] textarea-bordered w-full"
           required
         ></textarea>
         <input
@@ -124,7 +124,7 @@ const UpdateServices = () => {
           name="category"
           defaultValue={category}
           placeholder="Category (e.g., IT, Transport)"
-          className="input bg-[#9afcd890] input-bordered w-full"
+          className="input bg-[#f0ded0] input-bordered w-full"
           required
         />
         <input
@@ -132,7 +132,7 @@ const UpdateServices = () => {
           name="price"
           defaultValue={price}
           placeholder="Price in BDT"
-          className="input bg-[#9afcd890] input-bordered w-full"
+          className="input bg-[#f0ded0] input-bordered w-full"
           required
         />
         <input

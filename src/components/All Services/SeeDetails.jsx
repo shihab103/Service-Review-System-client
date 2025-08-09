@@ -160,7 +160,7 @@ const SeeDetails = () => {
             <p>No reviews yet.</p>
           ) : (
             reviews.map((r, idx) => (
-              <div key={idx} className="p-4 rounded-md shadow-sm bg">
+              <div key={idx} className="p-4 card-bg rounded-md shadow-sm bg">
                 <div className="flex items-center gap-3 mb-2">
                   <img src={r.userPhoto} alt={r.userName} className="w-10 h-10 rounded-full" />
                   <div>

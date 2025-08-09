@@ -1,13 +1,13 @@
 
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer bg-[#bfac9c] lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar for small devices */}
-        <div className="navbar bg-base-300 lg:hidden w-full">
+        <div className="navbar card-bg lg:hidden w-full">
           <div className="flex-none">
             <label
               htmlFor="my-drawer-2"
@@ -42,9 +42,13 @@ const DashboardLayout = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full card-bg text-base-content">
+          <Link to={"/"} className="font-bold text-[#513326] text-xl">
+          ServiceScout
+        </Link>
           <li><NavLink className="mt-5 font-semibold" to="/dashboard">Dashboard Home</NavLink></li>
           <li><NavLink className={'font-semibold'} to={'/dashboard/AddServices'}>Add Service</NavLink></li>
           <li><NavLink className={'font-semibold'} to={'/dashboard/MyServices/:email'}>My Services</NavLink></li>
+          <li><NavLink className={'font-semibold'} to={'/dashboard/my-reviews'}>My Reviews</NavLink></li>
         </ul>
       </div>
     </div>

@@ -53,7 +53,7 @@ const AddServices = () => {
   };
 
   return (
-    <div className="max-w-3xl my-10 shadow-2xl mx-auto px-4 py-8">
+    <div className="max-w-3xl  my-10 shadow-2xl mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-6 text-center">Add a New Service</h2>
       <form
         onSubmit={handleAddService}
@@ -63,48 +63,48 @@ const AddServices = () => {
           type="text"
           name="title"
           placeholder="Service Title"
-          className="input input-bordered bg-[#9afcd890] w-full"
+          className="input input-bordered bg-[#f0ded0] w-full"
           required
         />
         <input
           type="url"
           name="image"
           placeholder="Image URL"
-          className="input input-bordered bg-[#9afcd890] w-full"
+          className="input input-bordered bg-[#f0ded0] w-full"
           required
         />
         <input
           type="text"
           name="company"
           placeholder="Company Name"
-          className="input input-bordered bg-[#9afcd890] w-full"
+          className="input input-bordered bg-[#f0ded0] w-full"
           required
         />
         <input
           type="url"
           name="website"
           placeholder="Website URL"
-          className="input input-bordered bg-[#9afcd890] w-full"
+          className="input input-bordered bg-[#f0ded0] w-full"
           required
         />
         <textarea
           name="description"
           placeholder="Description"
-          className="textarea textarea-bordered bg-[#9afcd890] w-full"
+          className="textarea textarea-bordered bg-[#f0ded0] w-full"
           required
         ></textarea>
         <input
           type="text"
           name="category"
           placeholder="Category (e.g., IT, Transport)"
-          className="input input-bordered bg-[#9afcd890] w-full"
+          className="input input-bordered bg-[#f0ded0] w-full"
           required
         />
         <input
           type="number"
           name="price"
           placeholder="Price in BDT"
-          className="input input-bordered bg-[#9afcd890] w-full"
+          className="input input-bordered bg-[#f0ded0] w-full"
           required
         />
         <input

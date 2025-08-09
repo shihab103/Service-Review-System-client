@@ -45,7 +45,7 @@ const MyServiceCard = ({ service,onDelete }) => {
         <p>{description}</p>
         <div className="card-actions justify-end">
           <button
-            onClick={() => navigate(`/updateServices/${_id}`)}
+            onClick={() => navigate(`/dashboard/updateServices/${_id}`)}
             className="btn text-pink-500 btn-outline"
           >
             Update

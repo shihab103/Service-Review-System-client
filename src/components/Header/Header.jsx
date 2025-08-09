@@ -35,15 +35,19 @@ const Header = () => {
             <li>
               <NavLink to="/AllServices">All Services</NavLink>
             </li>
+            <li>
+              <NavLink to="/contact">Contact Us</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
 
             {user ? (
               <>
                 <li>
                   <NavLink to="/AddServices">Add Services</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/my-reviews">My Reviews</NavLink>
-                </li>
+
                 <li>
                   <button onClick={logOut} className="btn btn-bg w-full mt-1">
                     Logout
@@ -74,21 +78,22 @@ const Header = () => {
           <li>
             <NavLink to="/AllServices">All Services</NavLink>
           </li>
+          <li>
+            <NavLink to="/contact">Contact Us</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
 
           {user ? (
             <>
               {user && (
                 <>
                   <li>
-                    <NavLink to={'/dashboard'}>
-                      Dashboard
-                    </NavLink>
+                    <NavLink to={"/dashboard"}>Dashboard</NavLink>
                   </li>
                 </>
               )}
-              <li>
-                <NavLink to={`/my-reviews`}>My Reviews</NavLink>
-              </li>
               {user && (
                 <div className="flex justify-around items-center gap-2">
                   {user?.photoURL && (
