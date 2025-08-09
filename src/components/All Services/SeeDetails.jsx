@@ -5,40 +5,35 @@ import axios from "axios";
 import Rating from "react-rating";
 import Swal from "sweetalert2";
 import { getIdToken } from "firebase/auth";
-import { PacmanLoader } from "react-spinners";
+import Loading from "../Loading/Loading";
 
 const SeeDetails = () => {
   const { user, loading } = useContext(AuthContext);
   const [service, setService] = useState(null);
+  const [serviceLoading, setServiceLoading] = useState(true);
   const { id } = useParams();
 
   const [reviews, setReviews] = useState([]);
   const [textReview, setTextReview] = useState("");
   const [rating, setRating] = useState(0);
 
+  // Fetch service without requiring login
   useEffect(() => {
-    const fetchServices = async () => {
-      if (!loading && user?.email) {
-        try {
-          const accessToken = await getIdToken(user);
-
-          const res = await fetch(`${import.meta.env.VITE_API_URL}/service/${id}`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          });
-
-          const data = await res.json();
-          setService(data);
-        } catch (error) {
-          console.error("Failed to fetch services:", error);
-        }
+    const fetchService = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/service/${id}`);
+        const data = await res.json();
+        setService(data);
+      } catch (error) {
+        console.error("Failed to fetch service:", error);
+      } finally {
+        setServiceLoading(false);
       }
     };
+    fetchService();
+  }, [id]);
 
-    fetchServices();
-  }, [loading, user?.email, id]);
-
+  // Fetch reviews
   useEffect(() => {
     if (service?._id) {
       axios
@@ -48,12 +43,8 @@ const SeeDetails = () => {
     }
   }, [service?._id]);
 
-  if (loading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <PacmanLoader color="#36d7b7" size={25} />
-      </div>
-    );
+  if (loading || serviceLoading) {
+    return <Loading />;
   }
 
   if (!service) {
@@ -71,24 +62,23 @@ const SeeDetails = () => {
       return Swal.fire("Error", "Please provide both rating and review text", "error");
     }
 
-    const reviewData = {
-      serviceId: _id,
-      serviceTitle: title,
-      userName: user.displayName,
-      userEmail: user.email,
-      userPhoto: user.photoURL,
-      reviewText: textReview,
-      rating,
-      date: new Date().toISOString().split("T")[0],
-    };
-
     try {
       const accessToken = await getIdToken(user);
+      const reviewData = {
+        serviceId: _id,
+        serviceTitle: title,
+        userName: user.displayName,
+        userEmail: user.email,
+        userPhoto: user.photoURL,
+        reviewText: textReview,
+        rating,
+        date: new Date().toISOString().split("T")[0],
+      };
+
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+        headers: { Authorization: `Bearer ${accessToken}` },
       });
+
       if (res.data.insertedId) {
         Swal.fire("Success", "Review added successfully", "success");
         setReviews([reviewData, ...reviews]);
@@ -103,28 +93,25 @@ const SeeDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-10 px-4">
-      {/* Service Details Section */}
+      {/* Service Details */}
       <div className="card-bg shadow-xl rounded-xl overflow-hidden">
-        {/* Image */}
         <div className="h-64 md:h-96">
           <img src={image} alt={title} className="w-full h-full object-cover rounded-t-xl" />
         </div>
 
-        {/* Title & Price */}
         <div className="p-6 md:p-8 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4">
           <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
-          <span className="btn-bg  font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+          <span className="btn-bg font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap">
             ৳{price}
           </span>
         </div>
 
-      {/* Company */}
         <div className="px-6 md:px-8 pb-6 text-gray-600">
           <span className="font-semibold">Company:</span> {company}
         </div>
       </div>
 
-      {/* Review Section */}
+      {/* Reviews */}
       <div className="mt-12">
         <h3 className="text-2xl font-bold mb-4">Reviews ({reviews.length})</h3>
 
@@ -145,16 +132,16 @@ const SeeDetails = () => {
                 emptySymbol={<span className="text-3xl text-gray-400">☆</span>}
                 fullSymbol={<span className="text-3xl text-yellow-500">★</span>}
               />
-              <button className="btn btn-bg " onClick={handleSubmitReview}>
+              <button className="btn btn-bg" onClick={handleSubmitReview}>
                 Add Review
               </button>
             </div>
           </div>
         ) : (
-          <p className="text-red-500">Please log in to add a review.</p>
+          <p className="h1 font-bold mb-5">Please log in to add a review.....</p>
         )}
 
-        {/* Display Reviews */}
+        {/* Show Reviews */}
         <div className="space-y-4">
           {reviews.length === 0 ? (
             <p>No reviews yet.</p>

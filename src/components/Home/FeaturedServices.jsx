@@ -6,7 +6,7 @@ const FeaturedServices = ({ servicesData }) => {
 
   return (
     <div className="my-10">
-      <h2 className="text-3xl font-bold text-center mb-6">Featured Services</h2>
+      <h2 className="text-3xl font-bold h1 text-center mb-6">Featured Services</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         {data.slice(0, 10).map((service) => (
           <div

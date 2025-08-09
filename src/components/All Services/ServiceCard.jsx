@@ -1,26 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
 
 const ServiceCard = ({ service }) => {
   const { _id, image, title, description, category, price } = service;
 
   return (
-    <div className="card lg:card-side lg:h-[250px] card-bg shadow-md hover:shadow-xl transition duration-300">
-      <figure className="lg:w-1/2">
+    <div className="card-bg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden h-full">
+      <figure className="h-40 overflow-hidden rounded-t-lg"> {/* ১০০px উচ্চতা */}
         <img
           src={image}
           alt={title}
-          className="w-full h-64 object-cover rounded-l-md"
+          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
         />
       </figure>
-      <div className="card-body lg:w-1/2 text-center items-center justify-center">
-        <h2 className="card-title text-2xl font-bold">{title}</h2>
-        <p className="text-sm text-gray-500">{category}</p>
-        <p className="py-2 text-gray-600">{description.slice(0, 100)}...</p>
-        <p className="font-semibold text-lg text-green-600">${price}</p>
-        <div className="card-actions mt-4">
+      <div className="p-4 flex flex-col flex-grow"> {/* প্যাডিং একটু কমালাম */}
+        <h2 className="text-lg font-semibold mb-1 text-gray-800">{title}</h2> {/* ফন্ট সাইজ একটু ছোট */}
+        <p className="text-xs text-gray-600 font-medium mb-2">{category}</p> {/* ফন্ট ছোট */}
+        <p className="text-gray-600 flex-grow text-sm">{description.slice(0, 70)}...</p> {/* ডেসক্রিপশন ছোট */}
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-green-700 font-bold text-md">${price}</span>
           <Link to={`/services/${_id}`}>
-          <button className="btn btn-bg border-0">See Details</button>
+            <button className="btn-bg px-3 py-1.5 rounded-md hover:bg-indigo-700 transition-colors duration-300 text-sm">
+              See Details
+            </button>
           </Link>
         </div>
       </div>

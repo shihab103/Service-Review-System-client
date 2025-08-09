@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-// import { useLoaderData } from "react-router";
+import React, { useState, useEffect, useContext } from "react";
 import MyServiceCard from "./MyServiceCard";
-import { PacmanLoader } from "react-spinners";
-
-import { useEffect } from "react";
-import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { getIdToken } from "firebase/auth";
+import Loading from "../Loading/Loading";
 
 const MyServices = () => {
-  // const data = useLoaderData();
   const { user, loading } = useContext(AuthContext);
   const [services, setServices] = useState([]);
 
@@ -18,7 +13,6 @@ const MyServices = () => {
       if (!loading && user?.email) {
         try {
           const accessToken = await getIdToken(user);
-
           const res = await fetch(
             `${import.meta.env.VITE_API_URL}/my-service/${user.email}`,
             {
@@ -27,7 +21,6 @@ const MyServices = () => {
               },
             }
           );
-
           const data = await res.json();
           setServices(data);
         } catch (error) {
@@ -40,11 +33,7 @@ const MyServices = () => {
   }, [loading, user?.email]);
 
   if (loading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <PacmanLoader color="#36d7b7" size={25} />
-      </div>
-    );
+    return <Loading />;
   }
 
   const handleServiceDelete = (id) => {
@@ -54,14 +43,13 @@ const MyServices = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 px-5 gap-6 py-12">
-        {/* service card */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-5 py-12">
         {services.map((service) => (
           <MyServiceCard
             key={service._id}
             service={service}
             onDelete={handleServiceDelete}
-          ></MyServiceCard>
+          />
         ))}
       </div>
     </div>

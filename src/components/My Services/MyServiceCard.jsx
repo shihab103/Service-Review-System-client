@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-const MyServiceCard = ({ service,onDelete }) => {
-  const { _id, image, title, description, category, price } = service;
+const MyServiceCard = ({ service, onDelete }) => {
+  const { _id, image, title, description } = service;
   const navigate = useNavigate();
 
   const handleDelete = () => {
@@ -24,7 +24,7 @@ const MyServiceCard = ({ service,onDelete }) => {
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your service has been deleted.", "success");
-              onDelete(_id); // parent ke bolo ei service delete hoyeche
+              onDelete(_id); // update parent state
             }
           });
       }
@@ -32,25 +32,28 @@ const MyServiceCard = ({ service,onDelete }) => {
   };
 
   return (
-    <div className="card card-bg mx-auto w-full shadow-sm">
-      <figure>
+    <div className="card-bg rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden h-full">
+      <figure className="h-44 overflow-hidden rounded-t-lg">
         <img
-          className="h-[250px] w-full object-cover"
           src={image}
           alt={title}
+          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <p>{description}</p>
-        <div className="card-actions justify-end">
+      <div className="p-4 flex flex-col flex-grow">
+        <h2 className="text-lg font-semibold mb-2 text-gray-800">{title}</h2>
+        <p className="text-gray-600 flex-grow text-sm">{description.slice(0, 90)}...</p>
+        <div className="mt-3 flex justify-end gap-3">
           <button
             onClick={() => navigate(`/dashboard/updateServices/${_id}`)}
-            className="btn text-pink-500 btn-outline"
+            className="btn btn-outline btn-sm text-pink-500"
           >
             Update
           </button>
-          <button onClick={handleDelete} className="btn text-green-500 btn-outline">
+          <button
+            onClick={handleDelete}
+            className="btn btn-outline btn-sm text-green-500"
+          >
             Delete
           </button>
         </div>

@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
 
   return (
     <div className="my-12 px-4 lg:px-24">
-      <h2 className="text-4xl font-bold text-center mb-6">Why Choose Us</h2>
+      <h2 className="text-4xl font-bold text-center h1 mb-6">Why Choose Us</h2>
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
         We are committed to delivering fresh, high-quality meals crafted with care. Our team ensures every sip is satisfying, making us your top choice for amazing coffee experiences.
       </p>

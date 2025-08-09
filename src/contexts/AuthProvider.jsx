@@ -1,7 +1,6 @@
 import { auth } from "../firebase/firebase.init";
 import { AuthContext } from "./AuthContext";
 import { useEffect, useState } from "react";
-
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -42,17 +41,24 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
 
-      axios.get(`${import.meta.env.VITE_API_URL}`, {
-        headers: {
-          Authorization: `Bearer ${currentUser.accessToken}`,
-        },
-      });
+      if (currentUser) {
+        try {
+          await axios.get(`${import.meta.env.VITE_API_URL}`, {
+            headers: {
+              Authorization: `Bearer ${currentUser.accessToken}`,
+            },
+          });
+        } catch (error) {
+          console.error("Token request failed:", error);
+        }
+      }
 
       setLoading(false);
     });
+
     return () => {
       unsubscribe();
     };
@@ -69,6 +75,7 @@ const AuthProvider = ({ children }) => {
     updateUser,
     googleLogin,
   };
+
   return <AuthContext value={authData}>{children}</AuthContext>;
 };
 

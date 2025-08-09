@@ -74,7 +74,7 @@ const MyReviews = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-10 px-4">
-      <h2 className="text-3xl font-bold mb-6 text-center">My Reviews</h2>
+      <h2 className="text-3xl h2 font-bold mb-6 text-center">My Reviews</h2>
 
       {myReviews.length === 0 ? (
         <p className="text-center">You haven't posted any reviews yet.</p>
