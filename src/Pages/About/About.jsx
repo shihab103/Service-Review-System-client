@@ -1,4 +1,9 @@
 import image from '../../assets/Photo/about.jpg';
+
+import img1 from '../../assets/Photo/1 (2).jpg';
+import img2 from '../../assets/Photo/2 (2).jpg';
+import img3 from '../../assets/Photo/3 (2).jpg';
+
 const About = () => {
   return (
     <div className="bg-[#f9f5f0] text-gray-800">
@@ -47,17 +52,17 @@ const About = () => {
               {
                 name: "Carlos Mendoza",
                 role: "Head Coffee Chef",
-                img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                img: img1,
               },
               {
                 name: "Lina Thompson",
                 role: "Coffee Roasting Specialist",
-                img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                img: img2,
               },
               {
                 name: "Jamal Ahmed",
                 role: "Brew Master",
-                img: "https://images.unsplash.com/photo-1532634726-8b9fb9981cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                img: img3,
               },
             ].map((member, idx) => (
               <div

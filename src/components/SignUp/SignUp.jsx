@@ -74,7 +74,7 @@ const SignUp = () => {
         <p>
           If you already register go to{" "}
           <Link to={"/signin"} className="text-blue-500">
-            Register
+            Login
           </Link>
         </p>
 
