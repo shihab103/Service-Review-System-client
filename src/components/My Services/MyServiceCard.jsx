@@ -46,13 +46,13 @@ const MyServiceCard = ({ service, onDelete }) => {
         <div className="mt-3 flex justify-end gap-3">
           <button
             onClick={() => navigate(`/dashboard/updateServices/${_id}`)}
-            className="btn btn-outline btn-sm text-pink-500"
+            className="btn btn-outline btn-sm h1"
           >
             Update
           </button>
           <button
             onClick={handleDelete}
-            className="btn btn-outline btn-sm text-green-500"
+            className="btn btn-outline btn-sm h2"
           >
             Delete
           </button>

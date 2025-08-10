@@ -6,7 +6,7 @@ const Footer = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <footer className="footer items-center max-w-[1440px] mx-auto sm:footer-horizontal  text-base-content p-10 flex flex-col sm:flex-row sm:justify-between text-center sm:text-left">
+    <footer className="footer items-center  max-w-[1440px] mx-auto sm:footer-horizontal  text-base-content p-4 flex flex-col sm:flex-row sm:justify-between text-center sm:text-left">
       {/* Services Section */}
       <nav>
         <h6 className="footer-title">Services</h6>

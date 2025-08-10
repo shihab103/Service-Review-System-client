@@ -75,7 +75,7 @@ const ContactUs = () => {
       />
 
       {/* Top section */}
-      <div className="max-w-7xl mx-auto py-16 px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left: Text */}
         <div>
           <h2 className="text-4xl font-bold h1 text-brown-800 mb-4">
@@ -144,7 +144,7 @@ const ContactUs = () => {
 
       {/* Map section */}
       <div className="card-bg py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className=" mx-auto px-4">
           <h3 className="text-2xl font-bold mb-4 h1 text-center">
             Our Locations in Dhaka
           </h3>

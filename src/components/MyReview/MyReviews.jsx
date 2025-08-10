@@ -102,7 +102,7 @@ const MyReviews = () => {
                 </button>
                 <button
                   onClick={() => handleDelete(review._id)}
-                  className="btn btn-sm btn-error"
+                  className="btn btn-sm btn-bg"
                 >
                   Delete
                 </button>

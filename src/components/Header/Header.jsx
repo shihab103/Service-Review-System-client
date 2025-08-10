@@ -39,11 +39,9 @@ const Header = () => {
   );
 
   return (
-    // Full width bg wrapper
     <div className="w-full shadow-sm card-bg">  
-      {/* Centered container with max width and horizontal padding */}
       <div className="max-w-[1440px] mx-auto">
-        <div className="navbar sticky top-0 z-50 h-20 ">
+        <div className="navbar px-4 sticky top-0 z-50 h-20 ">
           {/* Left: Logo */}
           <div className="navbar-start">
             <Link to={"/"} className="font-bold text-xl">
@@ -56,7 +54,6 @@ const Header = () => {
             <ul className="menu menu-horizontal px-1 items-center">{menuItems}</ul>
           </div>
 
-          {/* Right: Dark Mode Toggle, Avatar, Logout (large screens) */}
           <div className="navbar-end hidden lg:flex items-center gap-4">
             <ThemeToggle />
             {user?.photoURL && (

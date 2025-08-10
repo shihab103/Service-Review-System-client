@@ -92,7 +92,7 @@ const SeeDetails = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto my-10 px-4">
+    <div className="max-w-3xl mx-auto my-10 px-4">
       {/* Service Details */}
       <div className="card-bg shadow-xl rounded-xl overflow-hidden">
         <div className="h-64 md:h-96">
@@ -106,7 +106,7 @@ const SeeDetails = () => {
           </span>
         </div>
 
-        <div className="px-6 md:px-8 pb-6 text-gray-600">
+        <div className="px-6 md:px-8 pb-6 gray">
           <span className="font-semibold">Company:</span> {company}
         </div>
       </div>
@@ -155,7 +155,7 @@ const SeeDetails = () => {
                     <p className="text-sm text-gray-500">{r.date}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 mb-1">{r.reviewText}</p>
+                <p className="gray mb-1">{r.reviewText}</p>
                 <Rating
                   readonly
                   initialRating={r.rating}

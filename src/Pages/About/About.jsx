@@ -8,7 +8,7 @@ const About = () => {
   return (
     <div className=" text-gray-800">
       {/* About Koffi Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <section className=" mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
         {/* Left Image */}
         <div>
           <img
@@ -43,7 +43,7 @@ const About = () => {
 
       {/* Meet Our Team Section (New Design) */}
       <section className="card-bg py-16">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="mx-auto px-6">
           <h2 className="text-3xl font-bold text-center h1 mb-10">
             Meet Our Coffee Chefs
           </h2>
@@ -83,7 +83,7 @@ const About = () => {
       </section>
 
       {/* Our Coffee Process */}
-      <section className="py-16 max-w-7xl mx-auto px-6">
+      <section className="py-16 mx-auto px-4">
         <h2 className="text-3xl font-bold text-center h1 mb-12">
           Our Coffee Process
         </h2>
