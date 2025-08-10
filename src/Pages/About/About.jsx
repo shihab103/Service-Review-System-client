@@ -6,7 +6,7 @@ import img3 from '../../assets/Photo/3 (2).jpg';
 
 const About = () => {
   return (
-    <div className="bg-[#f9f5f0] text-gray-800">
+    <div className=" text-gray-800">
       {/* About Koffi Section */}
       <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
         {/* Left Image */}
@@ -42,7 +42,7 @@ const About = () => {
       </section>
 
       {/* Meet Our Team Section (New Design) */}
-      <section className="bg-[#f0ded0] py-16">
+      <section className="card-bg py-16">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-center text-[#6e4528] mb-10">
             Meet Our Coffee Chefs
@@ -67,7 +67,7 @@ const About = () => {
             ].map((member, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl shadow-lg p-6 w-64 flex flex-col items-center hover:scale-105 transition-transform duration-300"
+                className="bg rounded-xl shadow-lg p-6 w-64 flex flex-col items-center hover:scale-105 transition-transform duration-300"
               >
                 <img
                   src={member.img}
@@ -96,7 +96,7 @@ const About = () => {
           ].map((process, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <div className="text-4xl mb-4">{process.icon}</div>
               <h3 className="font-semibold">{process.step}</h3>

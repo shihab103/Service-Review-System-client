@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../contexts/AuthContext";
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
+
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -61,6 +63,7 @@ const Header = () => {
           ServiceScout
         </Link>
       </div>
+      <ThemeToggle/>
 
       {/* Mobile Menu — Right side */}
       <div className="navbar-end lg:hidden">

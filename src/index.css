@@ -2,25 +2,59 @@
 @import 'tailwindcss';
 @plugin "daisyui";
 
-.active{
-    text-decoration: underline;
+.active {
+  text-decoration: underline;
 }
-.h1{
-    color: #8b5e3c;
+
+
+.h1 {
+  color: #8b5e3c;
 }
-.h2{
-    color: #6e4528;
+.h2 {
+  color: #6e4528;
 }
-.bg{
-    background-color: #fcf8f4;
+
+.input-bg{
+    background-color: #f0ded05d;
 }
-.btn-bg{
-    background-color: #bfac9c;
+
+.bg {
+  background-color: #fcf8f4;
 }
-.card-bg{
-    background-color: #f0ded0;
+.btn-bg {
+  background-color: #bfac9c;
+  color: #3e2f1c;
 }
-body{
-    background-color: #fcf8f4;
-    font-family: "Roboto", sans-serif;
+.card-bg {
+  background-color: #f0ded0;
+}
+
+body {
+  @apply font-["Roboto",sans-serif];
+  background-color: #fcf8f4;
+  color: #4a4a4a;
+}
+
+
+[data-theme="dark"] body {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+
+[data-theme="dark"] .bg {
+  background-color: #2c2c2c;
+}
+[data-theme="dark"] .input-bg {
+  background-color: #2c2c2c;
+}
+
+[data-theme="dark"] .btn-bg {
+  background-color: #4a4a4a;
+  color: #f5f5f5;
+}
+
+[data-theme="dark"] .card-bg {
+  background-color: #3a3a3a;
+  color: #f5f5f5;
 }

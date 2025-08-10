@@ -87,7 +87,7 @@ const AddServices = () => {
           type="text"
           name="title"
           placeholder="Service Title"
-          className="input input-bordered bg-[#f0ded0] w-full"
+          className="input input-bordered input-bg w-full"
           required
         />
 
@@ -95,7 +95,7 @@ const AddServices = () => {
           type="file"
           name="image"
           accept="image/*"
-          className="input input-bordered bg-[#f0ded0] w-full"
+          className="input input-bordered input-bg w-full"
           required
         />
 
@@ -103,34 +103,34 @@ const AddServices = () => {
           type="text"
           name="company"
           placeholder="Company Name"
-          className="input input-bordered bg-[#f0ded0] w-full"
+          className="input input-bordered input-bg w-full"
           required
         />
         <input
           type="url"
           name="website"
           placeholder="Website URL"
-          className="input input-bordered bg-[#f0ded0] w-full"
+          className="input input-bordered input-bg w-full"
           required
         />
         <textarea
           name="description"
           placeholder="Description"
-          className="textarea textarea-bordered bg-[#f0ded0] w-full"
+          className="textarea textarea-bordered input-bg w-full"
           required
         ></textarea>
         <input
           type="text"
           name="category"
           placeholder="Category (e.g., IT, Transport)"
-          className="input input-bordered bg-[#f0ded0] w-full"
+          className="input input-bordered input-bg w-full"
           required
         />
         <input
           type="number"
           name="price"
           placeholder="Price in BDT"
-          className="input input-bordered bg-[#f0ded0] w-full"
+          className="input input-bordered input-bg w-full"
           required
         />
         <input

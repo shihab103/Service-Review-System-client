@@ -41,7 +41,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-[#fdf8f4]">
+    <div>
       {/* Top section */}
       <div className="max-w-7xl mx-auto py-16 px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left: Text */}
@@ -63,7 +63,7 @@ const ContactUs = () => {
         <div>
           <form
             onSubmit={handleSubmit}
-            className="bg-white shadow-md rounded-lg p-6 space-y-4"
+            className="shadow-md rounded-lg p-6 space-y-4"
           >
             <input
               type="text"
@@ -111,7 +111,7 @@ const ContactUs = () => {
       </div>
 
       {/* Map section */}
-      <div className="bg-[#f0ded0] py-12 relative z-10">
+      <div className="card-bg py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <h3 className="text-2xl font-bold mb-4 text-[#8b5e3c] text-center text-brown-800">
             Our Locations in Dhaka
@@ -146,7 +146,7 @@ const ContactUs = () => {
       </div>
 
       {/* Subscribe section */}
-      <div className="bg-[#fdf8f4] py-12">
+      <div className="py-12">
         <div className="max-w-3xl mx-auto text-center px-6">
           <h2 className="text-3xl font-bold text-[#8b5e3c] mb-4">Coffee</h2>
           <p className="text-gray-600 mb-6">

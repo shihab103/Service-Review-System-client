@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div className="drawer bg-[#bfac9c] lg:drawer-open min-h-screen">
+    <div className="drawer bg lg:drawer-open min-h-screen">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar for small devices */}
