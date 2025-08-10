@@ -31,14 +31,14 @@ const DashboardLayout = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2 font-semibold text-lg text-[#513326]">
+          <div className="mx-2 flex-1 px-2 font-semibold text-lg h1">
             Dashboard
           </div>
         </div>
 
         {/* Page content */}
         <div className="p-6">
-          <h1 className="text-4xl text-center font-bold text-[#6e4528]">
+          <h1 className="text-4xl text-center font-bold h1">
             Welcome, {user?.displayName || user?.email}
           </h1>
 
@@ -56,12 +56,12 @@ const DashboardLayout = () => {
         <div className="w-80 min-h-full card-bg px-6 py-8 flex flex-col">
           <Link
             to={"/"}
-            className="font-extrabold text-3xl text-[#513326] mb-8 select-none"
+            className="font-extrabold text-3xl h1 mb-8 select-none"
           >
             ServiceScout
           </Link>
 
-          <ul className="menu flex flex-col text-[#513326] text-lg">
+          <ul className="menu flex flex-col h1 text-lg">
             {[
               { to: "/dashboard", label: "Dashboard Home" },
               { to: "/dashboard/AddServices", label: "Add Service" },

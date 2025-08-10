@@ -28,10 +28,10 @@ const FeaturedServices = ({ servicesData }) => {
               <h2 className="text-sm font-bold mb-1 line-clamp-1">
                 {service.title}
               </h2>
-              <p className="text-xs text-gray-500 mb-2 line-clamp-2">
+              <p className="text-xs gray mb-2 line-clamp-2">
                 {service.description}
               </p>
-              <div className="text-xs text-gray-700 mt-auto">
+              <div className="text-xs pc mt-auto">
                 <p>
                   <span className="font-medium">Price:</span> ${service.price}
                 </p>

@@ -14,11 +14,11 @@ const ServiceCard = ({ service }) => {
         />
       </figure>
       <div className="p-4 flex flex-col flex-grow"> {/* প্যাডিং একটু কমালাম */}
-        <h2 className="text-lg font-semibold mb-1 text-gray-800">{title}</h2> {/* ফন্ট সাইজ একটু ছোট */}
-        <p className="text-xs text-gray-600 font-medium mb-2">{category}</p> {/* ফন্ট ছোট */}
-        <p className="text-gray-600 flex-grow text-sm">{description.slice(0, 70)}...</p> {/* ডেসক্রিপশন ছোট */}
+        <h2 className="text-lg font-semibold mb-1">{title}</h2> {/* ফন্ট সাইজ একটু ছোট */}
+        <p className="text-xs pc font-medium mb-2">{category}</p> {/* ফন্ট ছোট */}
+        <p className="gray flex-grow text-sm">{description.slice(0, 70)}...</p> {/* ডেসক্রিপশন ছোট */}
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-green-700 font-bold text-md">${price}</span>
+          <span className="pc font-bold text-md">${price}</span>
           <Link to={`/services/${_id}`}>
             <button className="btn-bg px-3 py-1.5 rounded-md hover:bg-indigo-700 transition-colors duration-300 text-sm">
               See Details

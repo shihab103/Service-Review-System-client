@@ -7,8 +7,20 @@
 }
 
 
+.pc {
+  color: #333333ec;
+}
+[data-theme="dark"] .pc {
+  color: rgb(128, 128, 128);
+}
+.gray {
+  color: rgb(128, 128, 128);
+}
 .h1 {
   color: #8b5e3c;
+}
+[data-theme="dark"] .h1 {
+  color: #fff;
 }
 .h2 {
   color: #6e4528;

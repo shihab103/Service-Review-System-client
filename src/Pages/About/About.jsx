@@ -20,21 +20,21 @@ const About = () => {
 
         {/* Right Text */}
         <div>
-          <h2 className="text-3xl font-bold text-[#6e4528] mb-4">
+          <h2 className="text-3xl font-bold h1 mb-4">
             About Koffi
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 pc">
             Welcome to <span className="font-semibold">Koffi</span>, where
             passion meets perfection in every cup. We believe coffee is more
             than just a drink – it’s an experience, a moment of comfort, and a
             burst of inspiration.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 pc">
             <strong>We Started At:</strong> 2015 – with a small coffee cart and
             a big dream. Today, we serve coffee lovers from all over the city,
             blending tradition with modern flavors.
           </p>
-          <p>
+          <p className='pc'>
             Our beans are sourced from the finest farms, roasted with care, and
             brewed with love – all to bring you that perfect cup every time.
           </p>
@@ -44,7 +44,7 @@ const About = () => {
       {/* Meet Our Team Section (New Design) */}
       <section className="card-bg py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center text-[#6e4528] mb-10">
+          <h2 className="text-3xl font-bold text-center h1 mb-10">
             Meet Our Coffee Chefs
           </h2>
           <div className="flex flex-wrap justify-center gap-10">
@@ -84,7 +84,7 @@ const About = () => {
 
       {/* Our Coffee Process */}
       <section className="py-16 max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-[#6e4528] mb-12">
+        <h2 className="text-3xl font-bold text-center h1 mb-12">
           Our Coffee Process
         </h2>
         <div className="grid md:grid-cols-4 gap-8 text-center">
@@ -99,7 +99,7 @@ const About = () => {
               className="bg p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <div className="text-4xl mb-4">{process.icon}</div>
-              <h3 className="font-semibold">{process.step}</h3>
+              <h3 className="font-semibold h1">{process.step}</h3>
             </div>
           ))}
         </div>

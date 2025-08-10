@@ -46,14 +46,14 @@ const ContactUs = () => {
       <div className="max-w-7xl mx-auto py-16 px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left: Text */}
         <div>
-          <h2 className="text-4xl font-bold text-[#8b5e3c] text-brown-800 mb-4">
+          <h2 className="text-4xl font-bold h1 text-brown-800 mb-4">
             Get in Touch
           </h2>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg pc mb-6">
             Have any questions, feedback, or just want to say hello? Fill out
             the form and our coffee-loving team will get back to you soon.
           </p>
-          <p className="text-gray-600">
+          <p className="pc">
             Whether you're here to explore our brews, discuss collaborations, or
             simply share your coffee story, we’d love to hear from you.
           </p>
@@ -113,7 +113,7 @@ const ContactUs = () => {
       {/* Map section */}
       <div className="card-bg py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
-          <h3 className="text-2xl font-bold mb-4 text-[#8b5e3c] text-center text-brown-800">
+          <h3 className="text-2xl font-bold mb-4 h1 text-center">
             Our Locations in Dhaka
           </h3>
           <MapContainer
@@ -148,8 +148,8 @@ const ContactUs = () => {
       {/* Subscribe section */}
       <div className="py-12">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-3xl font-bold text-[#8b5e3c] mb-4">Coffee</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-3xl font-bold h1 mb-4">Coffee</h2>
+          <p className="pc mb-6">
             Stay updated with our latest brews, special offers, and coffee
             stories. Join our coffee family and never miss a sip of goodness.
           </p>

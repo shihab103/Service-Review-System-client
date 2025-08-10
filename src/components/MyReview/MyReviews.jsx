@@ -86,7 +86,7 @@ const MyReviews = () => {
               className="card-bg shadow-md p-6 rounded-lg flex flex-col gap-2"
             >
               <p className="text-xl font-semibold">{review.serviceTitle}</p>
-              <p className="text-gray-700">{review.reviewText}</p>
+              <p className="gray">{review.reviewText}</p>
               <Rating
                 readonly
                 initialRating={review.rating}
